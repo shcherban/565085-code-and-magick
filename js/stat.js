@@ -6,12 +6,12 @@ var CLOUD_Y = 0;
 
 // внешние размеры "облака"
 var CLOUD_WIDTH = 420;
-var CLOUD_HIGHT = 270;
+var CLOUD_HEIGHT = 270;
 
 // координаты и высота внутренней области "облака", где будут отображаться результаты игры
 var CLOUD_INNER_AREA_X = 140;
 var CLOUD_INNER_AREA_Y = 25;
-var CLOUD_INNER_AREA_HIGHT = 220;
+var CLOUD_INNER_AREA_HEIGHT = 220;
 
 var HISTOGRAM_HEIGHT = 150;
 var BAR_WIDTH = 40;
@@ -45,10 +45,10 @@ var renderCloud = function (ctx, x0, y0, color) {
     relCoords.push({x: CLOUD_WIDTH - topLeftQuarter[i].x, y: topLeftQuarter[i].y});
   }
   for (i = 1; i <= topLeftQuarter.length - 1; i++) {
-    relCoords.push({x: CLOUD_WIDTH - topLeftQuarter[i].x, y: CLOUD_HIGHT - topLeftQuarter[i].y});
+    relCoords.push({x: CLOUD_WIDTH - topLeftQuarter[i].x, y: CLOUD_HEIGHT - topLeftQuarter[i].y});
   }
   for (i = topLeftQuarter.length - 2; i >= 1; i--) {
-    relCoords.push({x: topLeftQuarter[i].x, y: CLOUD_HIGHT - topLeftQuarter[i].y});
+    relCoords.push({x: topLeftQuarter[i].x, y: CLOUD_HEIGHT - topLeftQuarter[i].y});
   }
 
   // отрисовка "облака"
@@ -92,23 +92,23 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.textBaseline = 'alphabetic';
   for (var i = 0; i <= players.length - 1; i++) {
     ctx.fillStyle = '#000';
-    ctx.fillText(players[i], CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP), CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HIGHT);
-    if (times[i] !== undefined) {
-      if (players[i] === 'Вы') {
-        ctx.fillStyle = YOUR_COLOR;
-      } else {
-        ctx.fillStyle = 'rgba(0, 0, 255, ' + (0.3 + 0.7 * Math.random()).toString();
-      }
-      ctx.fillRect(CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
-          CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT,
-          BAR_WIDTH,
-          HISTOGRAM_HEIGHT * times[i] / maxTime);
+    ctx.fillText(players[i], CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP), CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT);
+    if (!times[i]) {
       ctx.fillStyle = '#000';
-      ctx.fillText(Math.round(times[i]), CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
-          CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT - 2);
-    } else {
-      ctx.fillStyle = '#000';
-      ctx.fillText('?', CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP) + 2, CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HIGHT - TEXT_HEIGHT - 2);
+      ctx.fillText('?', CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP) + 2, CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - TEXT_HEIGHT - 2);
+      continue;
     }
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = YOUR_COLOR;
+    } else {
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + (0.3 + 0.7 * Math.random()).toString();
+    }
+    ctx.fillRect(CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
+        CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT,
+        BAR_WIDTH,
+        HISTOGRAM_HEIGHT * times[i] / maxTime);
+    ctx.fillStyle = '#000';
+    ctx.fillText(Math.round(times[i]), CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
+        CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT - 2);
   }
 };

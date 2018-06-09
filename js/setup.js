@@ -4,51 +4,51 @@ var NUMBER_OF_SIMILAR_WIZARDS = 4;
 
 var wizards = [];
 
+var firstNames = [
+  'Иван',
+  'Хуан Себастьян',
+  'Мария',
+  'Кристоф',
+  'Виктор',
+  'Юлия',
+  'Люпита',
+  'Вашингтон'
+];
+
+var lastNames = [
+  'да Марья',
+  'Верон',
+  'Мирабелла',
+  'Вальц',
+  'Онопко',
+  'Топольницкая',
+  'Нионго',
+  'Ирвинг'
+];
+
+var coatColors = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
+];
+
+var eyesColors = [
+  'black',
+  'red',
+  'blue',
+  'yellow',
+  'green'
+];
+
+var getRandomElement = function (elements) {
+  var randomIndex = Math.round(Math.random() * (elements.length - 1));
+  return elements[randomIndex];
+};
+
 var generateWizard = function () {
-  var firstNames = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var lastNames = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
-
-  var coatColors = [
-    'rgb(101, 137, 164)',
-    'rgb(241, 43, 107)',
-    'rgb(146, 100, 161)',
-    'rgb(56, 159, 117)',
-    'rgb(215, 210, 55)',
-    'rgb(0, 0, 0)'
-  ];
-
-  var eyesColors = [
-    'black',
-    'red',
-    'blue',
-    'yellow',
-    'green'
-  ];
-
-  var getRandomElement = function (elements) {
-    var randomIndex = Math.round(Math.random() * (elements.length - 1));
-    return elements[randomIndex];
-  };
-
   var wizardName = Math.round(Math.random()) ? getRandomElement(firstNames) +
     ' ' + getRandomElement(lastNames) : getRandomElement(lastNames) +
     ' ' + getRandomElement(firstNames);

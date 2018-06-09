@@ -62,17 +62,17 @@ var generateWizard = function () {
   return wizard;
 };
 
-var renderSimilarWizards = function (wizards) {
+var renderSimilarWizards = function (arrayOfWizards) {
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
   var similarListElement = document.querySelector('.setup-similar-list');
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i <= wizards.length - 1; i++) {
+  for (var i = 0; i <= arrayOfWizards.length - 1; i++) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
-    wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+    wizardElement.querySelector('.setup-similar-label').textContent = arrayOfWizards[i].name;
+    wizardElement.querySelector('.wizard-coat').style.fill = arrayOfWizards[i].coatColor;
+    wizardElement.querySelector('.wizard-eyes').style.fill = arrayOfWizards[i].eyesColor;
     fragment.appendChild(wizardElement);
   }
   similarListElement.appendChild(fragment);

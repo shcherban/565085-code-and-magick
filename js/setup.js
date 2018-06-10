@@ -63,9 +63,6 @@ var generateWizard = function () {
 };
 
 var renderSimilarWizards = function (arrayOfWizards) {
-  var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item');
   var similarListElement = document.querySelector('.setup-similar-list');
   var fragment = document.createDocumentFragment();
   for (var i = 0; i <= arrayOfWizards.length - 1; i++) {
@@ -84,6 +81,10 @@ userDialog.classList.remove('hidden');
 for (var i = 1; i <= NUMBER_OF_SIMILAR_WIZARDS; i++) {
   wizards.push(generateWizard());
 }
+
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+  .content
+  .querySelector('.setup-similar-item');
 
 renderSimilarWizards(wizards);
 

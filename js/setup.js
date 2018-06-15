@@ -98,9 +98,11 @@ var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var setupOpenIcon = document.querySelector('.setup-open-icon');
 var setupUserName = setup.querySelector('.setup-user-name');
+var ENTER_KEY_CODE = 13;
+var ESCAPE_KEY_CODE = 27;
 
 var documentEscKeydownHandler = function (evt) {
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === ESCAPE_KEY_CODE) {
     closeSetup();
   }
 };
@@ -126,13 +128,13 @@ var setupCloseClickHandler = function () {
 setupOpen.addEventListener('click', setupOpenClickHandler);
 setupClose.addEventListener('click', setupCloseClickHandler);
 setupClose.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENTER_KEY_CODE) {
     closeSetup();
   }
 });
 
 setupOpenIcon.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENTER_KEY_CODE) {
     openSetup();
   }
 });

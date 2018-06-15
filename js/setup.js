@@ -110,11 +110,17 @@ var documentEscKeydownHandler = function (evt) {
 var openSetup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', documentEscKeydownHandler);
+  coatElement.addEventListener('click', coatElementClickHandler);
+  eyesElement.addEventListener('click', eyesElementClickHandler);
+  fireballElement.addEventListener('click', fireballElementClickHandler);
 };
 
 var closeSetup = function () {
   setup.classList.add('hidden');
   document.removeEventListener('keydown', documentEscKeydownHandler);
+  coatElement.removeEventListener('click', coatElementClickHandler);
+  eyesElement.removeEventListener('click', eyesElementClickHandler);
+  fireballElement.removeEventListener('click', fireballElementClickHandler);
 };
 
 var setupOpenClickHandler = function () {
@@ -162,27 +168,27 @@ var coatColor = coatColors[0];
 var eyesColor = eyesColors[0];
 var fireballColor = fireballColors[0];
 
-coatElement.addEventListener('click', function () {
+var coatElementClickHandler = function () {
   if (++coatColorIndex > coatColors.length - 1) {
     coatColorIndex = 0;
   }
   coatColor = coatColors[coatColorIndex];
   coatColorInput.value = coatColor;
   coatElement.style.fill = coatColor;
-});
-eyesElement.addEventListener('click', function () {
+};
+var eyesElementClickHandler = function () {
   if (++eyesColorIndex > eyesColors.length - 1) {
     eyesColorIndex = 0;
   }
   eyesColor = eyesColors[eyesColorIndex];
   eyesColorInput.value = eyesColor;
   eyesElement.style.fill = eyesColor;
-});
-fireballElement.addEventListener('click', function () {
+};
+var fireballElementClickHandler = function () {
   if (++fireballColorIndex > fireballColors.length - 1) {
     fireballColorIndex = 0;
   }
   fireballColor = fireballColors[fireballColorIndex];
   fireballColorInput.value = fireballColor;
   fireballElement.style.backgroundColor = fireballColor;
-});
+};

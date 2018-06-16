@@ -113,6 +113,8 @@ var openSetup = function () {
   coatElement.addEventListener('click', coatElementClickHandler);
   eyesElement.addEventListener('click', eyesElementClickHandler);
   fireballElement.addEventListener('click', fireballElementClickHandler);
+  setupClose.addEventListener('click', setupCloseClickHandler);
+  setupClose.addEventListener('keydown', setupCloseEnterKeydownHandler);
 };
 
 var closeSetup = function () {
@@ -121,6 +123,8 @@ var closeSetup = function () {
   coatElement.removeEventListener('click', coatElementClickHandler);
   eyesElement.removeEventListener('click', eyesElementClickHandler);
   fireballElement.removeEventListener('click', fireballElementClickHandler);
+  setupClose.removeEventListener('click', setupCloseClickHandler);
+  setupClose.removeEventListener('keydown', setupCloseEnterKeydownHandler);
 };
 
 var setupOpenClickHandler = function () {
@@ -131,13 +135,13 @@ var setupCloseClickHandler = function () {
   closeSetup();
 };
 
-setupOpen.addEventListener('click', setupOpenClickHandler);
-setupClose.addEventListener('click', setupCloseClickHandler);
-setupClose.addEventListener('keydown', function (evt) {
+var setupCloseEnterKeydownHandler = function (evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     closeSetup();
   }
-});
+}
+
+setupOpen.addEventListener('click', setupOpenClickHandler);
 
 setupOpenIcon.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {

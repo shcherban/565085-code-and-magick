@@ -139,7 +139,7 @@ var setupCloseEnterKeydownHandler = function (evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     closeSetup();
   }
-}
+};
 
 setupOpen.addEventListener('click', setupOpenClickHandler);
 

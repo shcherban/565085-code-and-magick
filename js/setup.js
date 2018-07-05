@@ -2,6 +2,11 @@
 
 var NUMBER_OF_SIMILAR_WIZARDS = 4;
 
+var DEFAULT_SETUP_POSITION = {
+  LEFT: '50%',
+  TOP: '80px'
+};
+
 var wizards = [];
 
 var firstNames = [
@@ -107,7 +112,10 @@ var documentEscKeydownHandler = function (evt) {
   }
 };
 
+
 var openSetup = function () {
+  setup.style.left = DEFAULT_SETUP_POSITION.LEFT;
+  setup.style.top = DEFAULT_SETUP_POSITION.TOP;
   setup.classList.remove('hidden');
   document.addEventListener('keydown', documentEscKeydownHandler);
   coatElement.addEventListener('click', coatElementClickHandler);
@@ -129,6 +137,7 @@ var closeSetup = function () {
 
 var setupOpenClickHandler = function () {
   openSetup();
+
 };
 
 var setupCloseClickHandler = function () {

@@ -2,15 +2,15 @@
 
 (function () {
 
-// координаты верхней левой точки области отрисовки "облака"
+  // координаты верхней левой точки области отрисовки "облака"
   var CLOUD_X = 100;
   var CLOUD_Y = 0;
 
-// внешние размеры "облака"
+  // внешние размеры "облака"
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;
 
-// координаты и высота внутренней области "облака", где будут отображаться результаты игры
+  // координаты и высота внутренней области "облака", где будут отображаться результаты игры
   var CLOUD_INNER_AREA_X = 140;
   var CLOUD_INNER_AREA_Y = 25;
   var CLOUD_INNER_AREA_HEIGHT = 220;
@@ -21,7 +21,7 @@
   var YOUR_COLOR = 'rgba(255, 0, 0, 1)';
   var TEXT_HEIGHT = 16;
 
-// отрисовывает "облако" относительно заданной точки (x0, y0) цветом color
+  // отрисовывает "облако" относительно заданной точки (x0, y0) цветом color
   var renderCloud = function (ctx, x0, y0, color) {
 
     // точки для отрисовки левой верхней четверти "облака"
@@ -106,12 +106,12 @@
         ctx.fillStyle = 'rgba(0, 0, 255, ' + (0.3 + 0.7 * Math.random()).toString();
       }
       ctx.fillRect(CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
-        CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT,
-        BAR_WIDTH,
-        HISTOGRAM_HEIGHT * times[i] / maxTime);
+          CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT,
+          BAR_WIDTH,
+          HISTOGRAM_HEIGHT * times[i] / maxTime);
       ctx.fillStyle = '#000';
       ctx.fillText(Math.round(times[i]), CLOUD_INNER_AREA_X + i * (BAR_WIDTH + GAP),
-        CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT - 2);
+          CLOUD_INNER_AREA_Y + CLOUD_INNER_AREA_HEIGHT - HISTOGRAM_HEIGHT * times[i] / maxTime - TEXT_HEIGHT - 2);
     }
   };
 

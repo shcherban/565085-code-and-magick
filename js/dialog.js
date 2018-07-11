@@ -2,7 +2,8 @@
 
 (function () {
 
-  var dialogHandle = window.setup.querySelector('.setup-user-pic + input');
+  var setup = document.querySelector('.setup');
+  var dialogHandle = setup.querySelector('.setup-user-pic + input');
 
   dialogHandle.addEventListener('mousedown', function (downEvt) {
     downEvt.preventDefault();
@@ -18,8 +19,8 @@
         x: moveEvt.clientX - startCoords.x,
         y: moveEvt.clientY - startCoords.y
       };
-      window.setup.style.left = window.setup.offsetLeft + shift.x + 'px';
-      window.setup.style.top = window.setup.offsetTop + shift.y + 'px';
+      setup.style.left = setup.offsetLeft + shift.x + 'px';
+      setup.style.top = setup.offsetTop + shift.y + 'px';
       startCoords = {
         x: moveEvt.clientX,
         y: moveEvt.clientY
